@@ -1,0 +1,9 @@
+eGrab/       <-- repo
+│
+├─ manifest.json       <-- Chrome extension config
+├─ background.js       <-- handles context menu
+├─ content.js          <-- runs in web pages (hover + highlight)
+├─ popup.html          <-- optional popup UI
+├─ popup.js            <-- popup logic (optional)
+├─ styles.css          <-- tooltip/overlay styling
+└─ README.md

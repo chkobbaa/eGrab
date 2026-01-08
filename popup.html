@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>eGrab</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      width: 320px;
+      min-height: 200px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+      color: #f1f5f9;
+      padding: 20px;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .logo {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    }
+
+    .title-group h1 {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .title-group p {
+      font-size: 11px;
+      color: #94a3b8;
+      margin-top: 2px;
+    }
+
+    .section {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #64748b;
+      margin-bottom: 12px;
+    }
+
+    .toggle-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .toggle-label {
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .toggle {
+      position: relative;
+      width: 44px;
+      height: 24px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .toggle.active {
+      background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    }
+
+    .toggle-knob {
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 18px;
+      height: 18px;
+      background: white;
+      border-radius: 50%;
+      transition: transform 0.2s ease;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .toggle.active .toggle-knob {
+      transform: translateX(20px);
+    }
+
+    .status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+      font-size: 12px;
+      color: #94a3b8;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 8px rgba(34, 197, 94, 0.5);
+    }
+
+    .status-dot.inactive {
+      background: #64748b;
+      box-shadow: none;
+    }
+
+    .instructions {
+      font-size: 12px;
+      line-height: 1.6;
+      color: #94a3b8;
+    }
+
+    .instructions li {
+      margin-bottom: 6px;
+      padding-left: 4px;
+    }
+
+    .instructions li::marker {
+      color: #3b82f6;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 10px;
+      color: #475569;
+      margin-top: 8px;
+    }
+
+    .footer a {
+      color: #3b82f6;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    .keyboard-hint {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: 'SF Mono', Consolas, monospace;
+      font-size: 10px;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <div class="logo">🎯</div>
+    <div class="title-group">
+      <h1>eGrab</h1>
+      <p>Element Grabber</p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="section-title">Settings</div>
+    <div class="toggle-row">
+      <span class="toggle-label">Highlight on Hover</span>
+      <div class="toggle" id="highlightToggle">
+        <div class="toggle-knob"></div>
+      </div>
+    </div>
+    <div class="status" id="statusIndicator">
+      <span class="status-dot inactive"></span>
+      <span>Highlight disabled</span>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-title">How to Use</div>
+    <ol class="instructions">
+      <li>Hover over any element on the page</li>
+      <li>Right-click to open context menu</li>
+      <li>Select <strong>eGrab</strong> → Choose option:
+        <ul style="margin-top: 4px; list-style: none; padding-left: 12px;">
+          <li>📋 Copy HTML</li>
+          <li>🎨 Copy CSS</li>
+          <li>⚡ Copy JavaScript</li>
+          <li>📦 Copy ALL</li>
+        </ul>
+      </li>
+    </ol>
+  </section>
+
+  <footer class="footer">
+    <p>v1.0.0 &middot; <a href="https://github.com/yourusername/egrab" target="_blank">GitHub</a></p>
+  </footer>
+
+  <script src="popup.js"></script>
+</body>
+
+</html>
