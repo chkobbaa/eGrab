@@ -61,6 +61,4 @@ document.addEventListener('DOMContentLoaded', () => {
             }, { duration: 1000, fill: "forwards" });
         }
     });
-
-    console.log('eGrab Landing Page Initialized 🚀');
 });
