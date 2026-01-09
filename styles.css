@@ -227,7 +227,7 @@ nav {
     position: relative;
     max-width: 900px;
     margin: 0 auto;
-    box-shadow: 0 20px 80px -20px rgba(0,0,0,0.5);
+    box-shadow: 0 20px 80px -20px rgba(0, 0, 0, 0.5);
 }
 
 .sponsor-container::before {
@@ -253,11 +253,19 @@ nav {
 }
 
 .iframe-wrapper {
-    display: flex;
+    display: inline-flex;
     justify-content: center;
     overflow: hidden;
     border-radius: 12px;
-    background: var(--bg-dark);
+    background: transparent;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 600px;
+}
+
+.iframe-wrapper iframe {
+    width: 100%;
+    max-width: 600px;
 }
 
 .card {
@@ -269,7 +277,7 @@ nav {
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
-   margin: auto 0;
+    margin: auto 0;
 }
 
 .card:hover {
@@ -432,7 +440,7 @@ footer {
     .logo span {
         font-size: 1.25rem;
     }
-    
+
     .btn {
         padding: 10px 16px;
         font-size: 0.9rem;
@@ -446,19 +454,19 @@ footer {
     .card {
         padding: 24px;
     }
-    
+
     /* Code Preview Adjustments */
     .code-block {
         font-size: 0.8rem;
         padding: 16px;
     }
-    
+
     /* Sponsor Mobile */
     .sponsor-container {
         padding: 24px;
         border-radius: 16px;
     }
-    
+
     .sponsor-header h2 {
         font-size: 1.5rem;
     }
@@ -468,15 +476,15 @@ footer {
     .header .container {
         padding: 0 16px;
     }
-    
+
     .hero {
         padding-top: calc(var(--header-height) + 2em);
     }
-    
+
     .hero h1 {
         font-size: 2rem;
     }
-    
+
     /* Hide decorative blobs on very small screens if they block text */
     .bg-glow {
         opacity: 0.5;
